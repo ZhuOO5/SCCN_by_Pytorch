@@ -75,8 +75,6 @@ class SCCN(nn.Module):
         self.CCN_opt = CCNs['CCN_opt']
         self.CCN_sar = CCNs['CCN_sar']
         self.optimizer = torch.optim.Adam(self.CCN_opt.parameters(), lr=4e-4) # fix the sar part, only train the opt part(this is the original setting)
-        # this is better for Shuguang Village dataset
-        # self.optimizer = torch.optim.Adam(self.CCN_sar.parameters(), lr=2e-2) # fix the opt part, only train the sar part， this is better for Yellow River dataset
         self.loss = SCCN_Loss(lam=0.15)
         self.unch_pro = unch_pro # to record the unchange probability for each pixel
 
