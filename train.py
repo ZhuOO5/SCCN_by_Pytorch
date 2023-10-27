@@ -11,11 +11,11 @@ import numpy as np
 
 architecture_config_opt ={
     'conv_config' : [
-    (3, 3, 16, 1, 1), # (kernel_size, input_channels, nums_of_filter_as_out_put, stride, padding)
+    (3, 3, 32, 1, 1), # (kernel_size, input_channels, nums_of_filter_as_out_put, stride, padding)
     ],
 
     'coupling_config' : [
-        (1, 16, 20, 1, 0), 
+        (1, 32, 20, 1, 0), 
         (1, 20, 20, 1, 0),
         (1, 20, 20, 1, 0),
     ]
@@ -23,11 +23,11 @@ architecture_config_opt ={
 
 architecture_config_sar ={
     'conv_config' : [
-    (3, 1, 16, 1, 1), # (kernel_size, input_channels, nums_of_filter_as_out_put, stride, padding)
+    (3, 1, 32, 1, 1), # (kernel_size, input_channels, nums_of_filter_as_out_put, stride, padding)
     ],
 
     'coupling_config' : [ 
-        (1, 16, 20, 1, 0), 
+        (1, 32, 20, 1, 0), 
         (1, 20, 20, 1, 0),
         (1, 20, 20, 1, 0),
     ]
