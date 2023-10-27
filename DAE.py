@@ -68,8 +68,9 @@ class DAEs(nn.Module):
         self.ae1 = DAE(self.conv_config[0],img_info)
         self.coupling_daes = nn.ModuleList([DAE(t, img_info) for t in self.coupling_config])
 
-    def add_GaussianNoise(self, input, std = 0.1, mean = 0):
+    def add_GaussianNoise(self, input, std = 0.06, mean = 0):
         # add noise for optical image
+        # std = 0.06 is the better choice than 0.1
         noise = torch.randn(input.shape) * std + mean 
         noise = noise.cuda()
         input_with_noise = input + noise
@@ -97,7 +98,7 @@ class DAEs(nn.Module):
                 ae.training = False
         # Adding noise
         if self.img_info['img_type'] == 'opt':
-            x = self.add_GaussianNoise(input=x)    
+            x = self.add_GaussianNoise(input=x, std = 0.06)    
         elif self.img_info['img_type'] == 'sar':
             x = self.add_GammaNoise(input=x, looks_of_sensor=self.img_info['looks_of_sensor'])
         # forward pass
